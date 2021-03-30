@@ -1,21 +1,12 @@
-import React, {useState} from 'react';
-import './login.css';
+import React from 'react';
 
-function Login(isLogin) {
-    const [email, setEmail] = useState('');
-    const [pwd, setPwd] = useState('');
+function Login() {
 
-    return(
-    <div className='div-login'>
-        <div>
-            <form>
-                <input type='email' name='email' placeholder='email...' required onChange={(e) => setEmail(e.target)}/>
-                <input type='password' name='pwd' placeholder='password...' required onChange={(e) => setPwd(e.target)}/>
-                <button>Log In</button>
-            </form>
-        </div>
+  return(
+    <div>
+      <p>Login</p>
     </div>
-    )
+  )
 }
 
 export default Login;

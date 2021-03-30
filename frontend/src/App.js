@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from './Pages/Login/Login';
-// import Home from './Pages/Home/Home';
-import NoMatch from './Pages/404Page/404Page';
-import Signup from './Pages/Signup/Signup';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import Matches from './Components/Matches';
@@ -17,6 +14,9 @@ const App = () => {
   return(
     <Router>
       <Switch>
+        <Route exact path="/login">
+          <Login />
+        </Route>
         <Route exact path="/matches">
           <Matches />
         </Route>
