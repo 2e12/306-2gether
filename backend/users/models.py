@@ -1,13 +1,13 @@
-from sqlalchemy.orm import relationship
+from fastapi_users.db import SQLAlchemyBaseUserTable, SQLAlchemyUserDatabase
 
+from backend import database
 from backend.database import Base
-from sqlalchemy import Column, Integer, String
+from backend.users.schemas import UserDB
 
 
-class User(Base):
-    __tablename__ = "user"
+class UserTable(Base, SQLAlchemyBaseUserTable):
+    pass
 
-    id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, unique=True, index=True)
-    password_hash = Column(String)
-    username = Column(String, unique=True)
+
+users = UserTable.__table__
+user_db = SQLAlchemyUserDatabase(UserDB, database.database, users)

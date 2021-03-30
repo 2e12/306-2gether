@@ -1,19 +1,17 @@
-from pydantic import BaseModel
+from fastapi_users import models
 
 
-# Generic User
-
-class UserBaseSchema(BaseModel):
-    username: str
-    email: str
-
-    class Config:
-        orm_mode = True
+class User(models.BaseUser):
+    pass
 
 
-class UserSchema(UserBaseSchema):
-    id: int
+class UserCreate(models.BaseUserCreate):
+    pass
 
 
-class UserRegisterSchema(UserBaseSchema):
-    password: str
+class UserUpdate(User, models.BaseUserUpdate):
+    pass
+
+
+class UserDB(User, models.BaseUserDB):
+    pass
