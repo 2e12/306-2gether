@@ -1,13 +1,11 @@
-from starlette.staticfiles import StaticFiles
-
-from backend.database import engine
-from backend.users import models as user_models
-from backend.users.routes import user_router
+from backend.database import engine, Base
 from fastapi import FastAPI, APIRouter
 from starlette.middleware.cors import CORSMiddleware
 
+from backend.users.routes import user_router, auth_router
 
 app = FastAPI()
+Base.metadata.create_all(engine)
 
 origins = [
     "http://localhost:8100",
@@ -23,13 +21,10 @@ app.add_middleware(
 
 api_router = APIRouter()
 
-user_models.Base.metadata.create_all(bind=engine)
+api_router.include_router(user_router)
 
-api_router.include_router(
-    user_router,
-    prefix="/users",
-    tags=["users"],
-    responses={401: {"description": "Incorrect username or password"}},
+app.include_router(
+    auth_router
 )
 
 app.include_router(
