@@ -11,6 +11,7 @@ from sqlalchemy.ext.declarative import DeclarativeMeta
 from sqlalchemy.orm import Session
 
 from backend.db_helpers import create_db_object
+from backend.users.tags import resolve_tags
 from backend.users.usermodels import User
 from backend.users.userschemas import UserCreateSchema
 
@@ -31,6 +32,7 @@ def create_user(db: Session, user: UserCreateSchema):
     if is_user_valid(db, user):
         new_user = create_db_object(user, User, exclude_keys=['password_hash', 'tags'])
         new_user.password_hash = hashlib.sha256(user.password.encode()).hexdigest()
+        new_user.tags = resolve_tags(db, user.tags)
         db.add(new_user)
         db.commit()
         return new_user

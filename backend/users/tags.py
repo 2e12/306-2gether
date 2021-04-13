@@ -3,7 +3,7 @@ from typing import List
 from sqlalchemy.orm import Session
 
 from backend.users.usermodels import Tag
-from backend.users.userschemas import TagSchema
+from backend.users.userschemas import TagBaseSchema, TagSchema
 
 
 def create_tag(db: Session, name):
@@ -26,9 +26,12 @@ def get_tags(db: Session, skip: int, limit: int):
     return db.query(Tag).order_by(Tag.name.asc()).offset(skip).limit(limit).all()
 
 
-def resolve_tags(db: Session, tags: List[TagSchema]) -> List[TagSchema]:
+def resolve_tags(db: Session, tags: List[TagBaseSchema]) -> List[TagSchema]:
     """
-    The main intention behind this function in validation,
+    This function accepts a list of tags and creates them
+    in the database if these do not exist.
+
+    The main intention behind this function is validation,
     to make sure that, that all tags in a list are valid.
     """
     db_tags = []

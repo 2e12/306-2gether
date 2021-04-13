@@ -28,7 +28,7 @@ class UserProfileSchema(BaseModel):
     firstname: str = None
     lastname: str = None
     description: Optional[str] = None
-    tags: Optional[List[TagSchema]]
+    tags: List[TagSchema]
     gender: str
     birthdate: datetime.date
 
@@ -42,3 +42,4 @@ class UserOutputSchema(UserProfileSchema, UserBaseSchema):
 
 class UserCreateSchema(UserOutputSchema):
     password: str
+    tags: List[TagBaseSchema]
