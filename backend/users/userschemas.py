@@ -16,7 +16,6 @@ class TagSchema(TagBaseSchema):
 
 
 class UserBaseSchema(BaseModel):
-    id: int
     email: str
     username: str = None
 
@@ -37,9 +36,15 @@ class UserProfileSchema(BaseModel):
 
 
 class UserOutputSchema(UserProfileSchema, UserBaseSchema):
+    id: int
     pass
 
 
-class UserCreateSchema(UserOutputSchema):
+class UserCreateSchema(UserProfileSchema, UserBaseSchema):
     password: str
+    tags: List[TagBaseSchema]
+
+
+class UserUpdateSchema(UserCreateSchema):
+    password: Optional[str] = None
     tags: List[TagBaseSchema]
