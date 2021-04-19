@@ -10,10 +10,10 @@ from sqlalchemy.ext.declarative import DeclarativeMeta
 
 from sqlalchemy.orm import Session
 
-from backend.db_helpers import create_db_object
+from backend.db_helpers import create_db_object, apply_values_to_object
 from backend.users.tags import resolve_tags
 from backend.users.usermodels import User
-from backend.users.userschemas import UserCreateSchema
+from backend.users.userschemas import UserCreateSchema, UserUpdateSchema
 
 
 def get_user(db: Session, user_id: int):
@@ -38,13 +38,33 @@ def create_user(db: Session, user: UserCreateSchema):
         return new_user
 
 
-def is_user_valid(db: Session, user: UserCreateSchema):
+def update_user(db: Session, input_user: UserUpdateSchema, user: User):
+    if is_user_valid(db, input_user, ignore_exist_check=True):
+        user = apply_values_to_object(input_user, user, exclude_keys=[
+            'password_hash',
+            'tags',
+            'email',
+            'id',
+            'username',
+            'gender'
+        ])
 
-    if user_exists(db, user.username, user.email):
+        if input_user.password:
+            user.password_hash = hashlib.sha256(input_user.password.encode()).hexdigest()
+
+        user.tags = resolve_tags(db, input_user.tags)
+        db.commit()
+        return user
+
+
+def is_user_valid(db: Session, user: UserCreateSchema, ignore_exist_check=False):
+
+    if user_exists(db, user.username, user.email) and not ignore_exist_check:
         raise HTTPException(status_code=422, detail="A user with this email or username already exists.")
 
-    if len(user.password) < 8:
-        raise HTTPException(status_code=422, detail="Password must be at least 8 characters long.")
+    if user.password:
+        if len(user.password) < 8:
+            raise HTTPException(status_code=422, detail="Password must be at least 8 characters long.")
 
     if len(user.username) < 4:
         raise HTTPException(status_code=422, detail="Username must be at least 4 characters long.")
