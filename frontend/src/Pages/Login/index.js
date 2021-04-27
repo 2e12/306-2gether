@@ -1,10 +1,13 @@
 import React from 'react';
+import './login.scss';
 
 function Login() {
 
   return(
     <div>
-      <p>Login</p>
+      <div className="logIn">
+        <p>Login</p>
+      </div>
     </div>
   )
 }
