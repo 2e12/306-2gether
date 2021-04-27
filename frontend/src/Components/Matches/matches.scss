@@ -1,0 +1,67 @@
+.profile-pic {
+  width: 75px;
+  height: 75px;
+  border-radius: 75px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top left;
+  margin: 5px;
+}
+
+.matches {
+  display: inline !important;
+  margin: auto 35px !important;
+  color: var(--main-color);
+  // margin-top: 0px !important;
+
+  .name {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .age {
+    margin-left: 10px;
+    font-size: 20px;
+  }
+
+  .gender {
+    line-height: 1em;
+    margin-bottom: 0.5em !important;
+  }
+}
+
+.user {
+  margin-bottom: 20px !important;
+}
+
+.list {
+  margin-left: 15px;
+}
+
+.search {
+  width: 25px;
+}
+
+.searchTag {
+  margin: 35px 5px;
+  border: 1px solid var(--grey-color);
+  padding: 5px 10px;
+  border-radius: 50px;
+  width: 100% !important;
+
+  img {
+    margin: 0px 20px;
+  }
+
+  span {
+    font-size: 20px;
+    color: var(--grey-color);
+    margin-left: 50px;
+  }
+}
+
+#match {
+  display: none;
+  border: none;
+  width: 275px;
+}
