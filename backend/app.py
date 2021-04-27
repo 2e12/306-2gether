@@ -2,6 +2,7 @@ from backend.database import engine, Base
 from fastapi import FastAPI, APIRouter
 from starlette.middleware.cors import CORSMiddleware
 
+from backend.suggestions.suggestionroutes import suggestion_router
 from backend.users.userroutes import user_router
 
 app = FastAPI()
@@ -22,6 +23,10 @@ app.add_middleware(
 api_router = APIRouter()
 
 api_router.include_router(user_router)
+api_router.include_router(
+    suggestion_router,
+    prefix="/suggestion"
+)
 
 app.include_router(
     api_router,
