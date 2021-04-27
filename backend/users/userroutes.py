@@ -5,23 +5,18 @@ from fastapi_utils.inferring_router import InferringRouter
 
 from sqlalchemy.orm import Session
 
-from backend.database import SessionLocal
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 import hashlib
 import secrets
 
+from backend.db_helpers import get_db
 from backend.users.useractions import get_user_by_username, create_user, update_user, get_user_by_id
 from backend.users.usermodels import User
 from backend.users.userschemas import UserOutputSchema, UserCreateSchema, UserUpdateSchema
 
 user_router = InferringRouter()
 security = HTTPBasic()
-
-
-def get_db():
-    db = SessionLocal()
-    return db
 
 
 def auth(credentials: HTTPBasicCredentials = Depends(security)):
