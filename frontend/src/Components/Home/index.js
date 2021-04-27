@@ -1,9 +1,12 @@
 import React from 'react';
+import './home.scss';
+import { getUsers } from '../../utils/Matches';
 
 function Home() {
+  var users = getUsers();
 
   return(
-    <div className="container">
+    <div>
       <p>Home</p>
     </div>
   )
