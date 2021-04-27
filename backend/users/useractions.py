@@ -5,8 +5,6 @@ import re
 import hashlib
 
 from fastapi import HTTPException
-from pydantic.main import BaseModel
-from sqlalchemy.ext.declarative import DeclarativeMeta
 
 from sqlalchemy.orm import Session
 
