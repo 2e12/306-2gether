@@ -2,7 +2,7 @@ from backend.database import engine, Base
 from fastapi import FastAPI, APIRouter
 from starlette.middleware.cors import CORSMiddleware
 
-from backend.users.routes import user_router, auth_router
+from backend.users.userroutes import user_router
 
 app = FastAPI()
 Base.metadata.create_all(engine)
@@ -22,10 +22,6 @@ app.add_middleware(
 api_router = APIRouter()
 
 api_router.include_router(user_router)
-
-app.include_router(
-    auth_router
-)
 
 app.include_router(
     api_router,
