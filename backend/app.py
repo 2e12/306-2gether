@@ -22,10 +22,14 @@ app.add_middleware(
 
 api_router = APIRouter()
 
-api_router.include_router(user_router)
+api_router.include_router(
+    user_router,
+    tags=['Auth']
+)
 api_router.include_router(
     suggestion_router,
-    prefix="/suggestion"
+    prefix="/suggestion",
+    tags=['Interaction']
 )
 
 app.include_router(
