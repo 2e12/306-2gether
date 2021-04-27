@@ -1,0 +1,15 @@
+.menu {
+  display: inline;
+  
+  img {
+    width: 50px;
+  }
+}
+
+.active {
+  border-bottom: none;
+}
+
+.navbar {
+  background-color: var(--main-light-color);
+}

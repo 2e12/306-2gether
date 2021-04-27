@@ -1,0 +1,46 @@
+.profile {
+  margin-top: 40px !important;
+}
+
+.edit {
+  margin-top: 55px;
+}
+
+.delete {
+  margin-top: 60px;
+}
+
+.confirm {
+  display: none;
+  position: absolute;
+  background-color: var(--main-light-color);
+  border: 1px solid var(--main-color);
+  border-radius: 30px;
+  width: 350px;
+  height: 150px;
+  margin-top: -350px !important;
+  margin-left: -7.5px !important;
+  padding: 20px 30px;
+
+  span {
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.btnConfirm {
+  margin-top: 15px;
+  height: 40px;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  padding: 5px 15px;
+
+  span {
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.save {
+  margin-left: 55px;
+}

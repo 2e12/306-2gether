@@ -1,0 +1,61 @@
+.pic {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  display: inline-block !important;
+}
+
+.images {
+  display: inline !important;
+  padding-right: 15px;
+  margin-bottom: 20px;
+}
+
+.remove {
+  height:35px !important;
+  width: 100px;
+  border-radius: 15px;
+  background-color: var(--secondary-color);
+  text-align: center;
+
+  span {
+    vertical-align: middle !important;
+  }
+}
+
+.pictures {
+  margin-top: 30px !important;
+  margin-left: -20px !important;
+  text-align: center;
+
+  .row {
+    margin-left: 20px !important;
+  }
+}
+
+.uploadBtn{
+  // margin-top: 50px !important;
+  width: 260px;
+  height: 65px;
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+  text-align: center !important;
+  margin: auto !important;
+  vertical-align: middle !important;
+
+  span {
+    font-size: 25px;
+    vertical-align: middle !important;
+  }
+}
+
+.profilePic {
+  margin-bottom: 50px;
+  padding-left: 0px !important;
+}
+
+input[type="file"] {
+  display: none;
+}

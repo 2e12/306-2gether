@@ -1,0 +1,20 @@
+.profile-menu {
+  margin: 16.5px 5px;
+  margin-right: 25px !important;
+  // padding: 16.5px 25px;
+
+  img {
+    width: 35px;
+  }
+
+  span {
+    color: var(--main-color);
+    font-size: 25px;
+    margin-left: 40px !important;
+    vertical-align: middle !important;
+  }
+
+  .chevron {
+    float: right;
+  }
+}

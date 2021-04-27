@@ -1,0 +1,53 @@
+.red-box {
+  height: 190px;
+  background-color: var(--secondary-color);
+  padding-top: 35px !important;
+
+  .white-circle {
+    margin-left: 45px;
+    width: 85px;
+    height: 85px;
+    background-color: var(--main-light-color);
+    border-radius: 85px;
+
+    .profile-pic {
+      width: 75px;
+      height: 75px;
+      border-radius: 75px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top left;
+      margin: 5px;
+    }
+  }
+
+  .profile {
+    display: inline !important;
+    margin: auto 35px !important;
+
+    .name {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .age {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+
+    .gender {
+      line-height: 1em;
+      margin-bottom: 0.5em !important;
+    }
+  }
+}
+
+.white-box {
+  min-height: 587px;
+  margin-top: -40px;
+  padding-top: 20px;
+  margin-bottom: 75px;
+  border-radius: 40px;
+  background-color: var(--main-light-color);
+  padding-left: 20px;
+}
