@@ -1,7 +1,12 @@
 from pydantic.main import BaseModel
 from sqlalchemy.ext.declarative import DeclarativeMeta
 
-from backend.database import Base
+from backend.database import Base, SessionLocal
+
+
+def get_db():
+    db = SessionLocal()
+    return db
 
 
 def create_db_object(input_data: BaseModel, db_table: DeclarativeMeta, exclude_keys: list = None) -> Base:
