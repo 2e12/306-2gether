@@ -3,7 +3,7 @@ import './template.scss';
 import Andreas_1 from '../../../assets/andreas/Andreas_1.jpg';
 import User from '../../User';
 
-function Template({children}) {
+function Template({children, user}) {
   var user = {
     userName: "Andreas",
     birthdate: new Date('1998-12-17'),

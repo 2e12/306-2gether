@@ -1,13 +1,11 @@
-import { v4 as uuid} from "uuid";
-
-export const getToken = () => {
-  sessionStorage.setItem('token', uuid());
+export const getToken = (user) => {
+  sessionStorage.setItem('token', JSON.stringify(user));
 }
 
 export const clearToken = () => {
   sessionStorage.clear();
 }
 
-export const checkToken = () => {
-  return sessionStorage.getItem('token');
+export const checkToken = (user) => {
+  return sessionStorage.getItem('token') === JSON.stringify(user);
 }

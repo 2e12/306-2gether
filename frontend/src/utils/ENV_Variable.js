@@ -1,0 +1,1 @@
+export const API_PATH = 'http://172.20.10.3:8888/api';

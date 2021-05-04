@@ -10,6 +10,8 @@ import share from '../../../assets/socialmedia/share.png';
 import tiktok from '../../../assets/socialmedia/tik-tok.png';
 import chat from '../../../assets/socialmedia/chat-bubbles-with-ellipsis.png';
 import { checkToken, getToken } from '../../../utils/Token';
+import { register } from 'react-scroll/modules/mixins/scroller';
+import { createUser } from '../../../utils/User';
 
 function SocialMedia({setStep, user, setUser, setToken}) {
   const [mailData, setMailData] = useState();
@@ -40,7 +42,7 @@ function SocialMedia({setStep, user, setUser, setToken}) {
     )
   }
 
-  const nextStep = () => {
+  const register = () => {
     var userLocal = {
       userName: user.userName,
       birthdate: new Date(user.birthdate),
@@ -96,12 +98,13 @@ function SocialMedia({setStep, user, setUser, setToken}) {
       images: [...user.images]
     };
     setUser(userLocal);
+    createUser(userLocal);
     getToken()
     setToken(checkToken())
   }
 
   return(
-    <form onSubmit={() => nextStep()} >
+    <form onSubmit={() => register()} >
       <Template header={header()} >
         <div className="socialMedia">
           <div className="info">Please enter your social media</div>
@@ -195,7 +198,7 @@ function SocialMedia({setStep, user, setUser, setToken}) {
               </div>
             </div>
           </div>
-          <div className="btnSocialMedia" >
+          <div className="btnSocialMedia">
             <input type="submit" className="accountBtn" value="Save Account" />
           </div>
         </div>

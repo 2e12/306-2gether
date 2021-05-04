@@ -12,7 +12,7 @@ import description from '../../assets/profile/description.png';
 import chevron from '../../assets/profile/chevron.png';
 import { checkToken, clearToken } from '../../utils/Token';
 
-function Profile({setToken}) {
+function Profile({setToken, user}) {
 
   const openConfirmDelete = () => {
     let subMenu = document.querySelector(".confirm");
