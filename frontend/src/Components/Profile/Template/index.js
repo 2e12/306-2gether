@@ -1,7 +1,7 @@
 import React from 'react';
 import './template.scss';
 import Andreas_1 from '../../../assets/andreas/Andreas_1.jpg';
-import User from '../../../Pages/User';
+import User from '../../User';
 
 function Template({children}) {
   var user = {

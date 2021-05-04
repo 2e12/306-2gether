@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from './Components/Login';
 import Navbar from './Components/Navbar';
@@ -7,10 +7,14 @@ import Matches from './Components/Matches';
 import Profile from './Components/Profile';
 import Menu from './Components/Profile/Menu';
 import User from './Components/Matches/User';
-import Register from './Pages/Register';
+import Register from './Components/Register';
+import { checkToken } from './utils/Token';
 
 const App = () => {
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState();
+  useEffect(() => {
+    setToken(checkToken())
+  }, [])
   return(
     <Router>
       {

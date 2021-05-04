@@ -6,7 +6,8 @@ import Matches from '..';
 import Tags from '../../Tags';
 import SocialMedia from '../../SocialMedia';
 import { getUser } from '../../../utils/Matches';
-import UserCarousel from '../../../Pages/Carousel';
+import UserCarousel from '../../Carousel';
+import Info from '../../User'
 
 function User() {
   const location = useLocation();

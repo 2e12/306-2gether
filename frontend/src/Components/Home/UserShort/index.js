@@ -1,8 +1,8 @@
 import React from 'react';
 import Swipe from 'react-easy-swipe';
-import User from '../../../Pages/User';
-import Tags from '../../../Pages/Tags';
-import Buttons from '../../../Pages/Buttons';
+import User from '../../User';
+import Tags from '../../Tags';
+import Buttons from '../../Buttons';
 
 function UserShort({user, setShowUser, setAction}) {
 

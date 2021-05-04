@@ -1,9 +1,9 @@
 import React from 'react';
-import User from '../../../Pages/User';
-import Tags from '../../../Pages/Tags';
-import Buttons from '../../../Pages/Buttons';
+import User from '../../User';
+import Tags from '../../Tags';
+import Buttons from '../../Buttons';
 import arrow from '../../../assets/home/arrow.png';
-import UserCarousel from '../../../Pages/Carousel';
+import UserCarousel from '../../Carousel';
 
 function UserDetails({user, setShowUser, setAction}) {
   return(
