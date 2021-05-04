@@ -14,8 +14,11 @@ function Login({setToken}) {
   return(
     <div className="betterclass">
         <img src={deal_red} alt="deal_red" className="image"/>
-        <input className="inputField" type="text" placeholder="Email"/>
-        <input className="inputField" type="password" placeholder="Password"/>
+        <input className="input" type="text" placeholder="Username"/>
+        <input className="input" type="password" placeholder="Passwort"/>
+        <button className="button">Login</button>
+        <p className="question">Hast du noch kein Konto?</p>
+        <Link className="link" to='/register'>Registrieren</Link>
     </div>
   )
 }
