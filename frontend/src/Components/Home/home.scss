@@ -1,0 +1,49 @@
+.backgroundPic {
+  height: 750px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.infoDetailsBackground {
+  // margin-top: 0px;
+  position: fixed;
+  height: 400px;
+  width: 100%;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: 50% 50%;
+}
+
+.infoUser {
+  padding-left: 30px;
+  padding-top: 440px;
+}
+
+.infoDetails {
+  padding-top: 400px !important;
+  margin-bottom: 75px;
+  padding: 0px 30px;
+
+  .arrowUser {
+    img {
+      position: fixed;
+      transform: rotate(180deg);
+      width: 75px;
+      height: 75px;
+      right: 0px;
+      margin-top: -35px;
+      background-color: var(--main-light-color) !important;
+      border-radius: 50px;
+    }
+  }
+}
+
+.name {
+  margin-bottom: 25px;
+}
+
+.tagsUser {
+  margin-bottom: 15px;
+}

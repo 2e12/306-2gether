@@ -1,0 +1,39 @@
+.white {
+  color: var(--main-light-color) !important;
+}
+
+.small { 
+  .name {
+    font-size: 30px !important;
+    font-weight: bold;
+  }
+
+  .age {
+    margin-left: 10px;
+    font-size: 20px !important;
+  }
+
+  .gender {
+    line-height: 1em;
+    margin-bottom: 0.5em !important;
+    font-size: 16px !important;
+  }
+}
+
+.user {
+  .name {
+    font-size: 50px;
+    font-weight: bold;
+  }
+
+  .age {
+    margin-left: 10px;
+    font-size: 35px;
+  }
+
+  .gender {
+    line-height: 1em;
+    margin-bottom: 0.5em !important;
+    font-size: 20px;
+  }
+}

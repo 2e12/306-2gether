@@ -1,0 +1,20 @@
+import React from 'react';
+import './user.scss';
+
+function User({user, color, size}) {
+  function calculateAge(birthday) { // birthday is a date
+    var ageDifMs = Date.now() - birthday.getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
+
+  return(
+    <div className={`user ${color} ${size}`}>
+      <span className="name">{user.userName}</span>
+      <span className="age">{calculateAge(user.birthdate)}</span>
+      <p className="gender">{user.gender}</p>
+    </div>
+  )
+}
+
+export default User;

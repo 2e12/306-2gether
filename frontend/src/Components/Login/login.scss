@@ -1,0 +1,38 @@
+.betterclass {
+  text-align: center;
+  width: 100%;
+}
+
+.image {
+  margin: 15% auto 30% auto;
+  width: 50%;
+}
+
+.input {
+  padding: 10px 10px;
+  width: 85%;
+  border: 1px solid var(--grey-color);
+  border-radius: 10px;
+  font-weight: bolder;
+}
+
+.button {
+  margin: 5% 30% 30% 30%;
+  padding: 10px 10px;
+  width: 40%;
+  color: var(--main-light-color);
+  font-weight: bolder;
+  background-color: var(--secondary-color);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+
+.question {
+  font-weight: bolder;
+}
+
+.link {
+  font-weight: bolder;
+  color: var(--secondary-color);
+}

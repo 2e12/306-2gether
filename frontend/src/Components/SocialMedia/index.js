@@ -10,7 +10,7 @@ function SocialMedia({user}) {
         <div className="row info" >
           <img src={benutzer} alt="user" className="benutzer" />
           <div>
-            <div className="name" >
+            <div className="fullName" >
               {user.name} {user.lastName}
             </div>
             <div>
@@ -23,7 +23,7 @@ function SocialMedia({user}) {
         {user.socialMedia.map((socialMedia) => (
           <div className="container" >
             <div className="row" >
-              <img src={socialMedia.icon} alt={socialMedia.name} />
+              <img className="icons" src={socialMedia.icon} alt={socialMedia.name} />
               <div>
                 {socialMedia.userName}
               </div>

@@ -1,0 +1,18 @@
+.red-box-register {
+  height: 260px !important;
+  background-color: var(--secondary-color);
+  position: fixed;
+  width: 100%;
+  top: 0px !important;
+  z-index: -1;
+  padding-top: 35px !important;
+}
+
+.white-box-register {
+  margin-top: 220px !important;
+  padding: 20px 35px !important;
+  margin-bottom: 0px !important;
+  min-height: 587px;
+  border-radius: 40px;
+  background-color: var(--main-light-color);
+}

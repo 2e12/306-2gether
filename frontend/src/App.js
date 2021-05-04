@@ -1,22 +1,33 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from './Pages/Login/Login';
+import Login from './Components/Login';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import Matches from './Components/Matches';
 import Profile from './Components/Profile';
 import Menu from './Components/Profile/Menu';
 import User from './Components/Matches/User';
+import Register from './Components/Register';
+import { checkToken } from './utils/Token';
 
 const App = () => {
-  const [isLog, setIsLog] = useState(false);
+  const [token, setToken] = useState();
+  useEffect(() => {
+    setToken(checkToken())
+  }, [])
+  return(
+    <Router>
+      {
+        !token ? <UnregisterApp setToken={setToken} /> : <RegisterApp setToken={setToken} />
+      }
+    </Router>
+  )
+}
 
+const RegisterApp = ({setToken}) => {
   return(
     <Router>
       <Switch>
-        <Route exact path="/login">
-          <Login />
-        </Route>
         <Route exact path="/matches">
           <Matches />
         </Route>
@@ -24,7 +35,7 @@ const App = () => {
           <User />
         </Route>
         <Route exact path="/profile">
-          <Profile />
+          <Profile setToken={setToken} />
         </Route>
         <Route exact path="/profile/:profileID">
           <Menu />
@@ -35,7 +46,21 @@ const App = () => {
       </Switch>
       <Navbar />
     </Router>
-    
+  )
+}
+
+const UnregisterApp = ({setToken}) => {
+  return(
+    <Router>
+      <Switch>
+        <Route exact path="/register">
+          <Register setToken={setToken} />
+        </Route>
+        <Route path="*">
+          <Login setToken={setToken} />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 

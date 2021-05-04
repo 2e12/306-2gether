@@ -10,8 +10,9 @@ import picture from '../../assets/profile/picture.png';
 import share from '../../assets/profile/share.png';
 import description from '../../assets/profile/description.png';
 import chevron from '../../assets/profile/chevron.png';
+import { checkToken, clearToken } from '../../utils/Token';
 
-function Profile() {
+function Profile({setToken}) {
 
   const openConfirmDelete = () => {
     let subMenu = document.querySelector(".confirm");
@@ -23,12 +24,29 @@ function Profile() {
     subMenu.style.display = "none";
   }
 
+  const deleteToken = () => {
+    clearToken();
+    setToken(checkToken());
+  }
+
+  const deleteUser = () => {
+    deleteToken()
+  }
+
   return(
     <div>
       <Template>
         <div className="profile">
           <div>
-            <ProfileLink link='/logout' icon={logout} title='Logout' />
+            <div className="logout">
+              <div className="link-profile" onClick={() => deleteToken()} >
+                <div className="profile-menu">
+                  <img className="icon" src={logout} alt={'Logout'} />
+                  <span>Logout</span>
+                  <img className="chevron" src={chevron} alt="Chevron" />
+                </div>
+              </div >
+            </div>
             <ProfileLink link='/profile/password' icon={padlock} title='Change password' />
           </div>
           <div className="edit">
@@ -56,7 +74,7 @@ function Profile() {
                   Abbrechen
                 </span>
               </div>
-              <div className="btnConfirm save">
+              <div className="btnConfirm save" onClick={() => deleteUser()} >
                 <span>
                   Löschen
                 </span>
