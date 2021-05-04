@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from './Pages/Login/Login';
+import Login from './Components/Login/Login';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import Matches from './Components/Matches';
