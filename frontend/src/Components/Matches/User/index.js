@@ -3,8 +3,8 @@ import { useLocation, useHistory } from 'react-router-dom';
 import './user.scss';
 import chevron from '../../../assets/chevron_grey.png';
 import Matches from '..';
-import Tags from '../../../Pages/Tags';
-import SocialMedia from '../../../Pages/SocialMedia';
+import Tags from '../../Tags';
+import SocialMedia from '../../SocialMedia';
 import { getUser } from '../../../utils/Matches';
 
 function User() {
