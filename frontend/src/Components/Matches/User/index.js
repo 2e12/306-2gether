@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import './user.scss';
 import chevron from '../../../assets/chevron_grey.png';
@@ -7,19 +7,20 @@ import Tags from '../../../Pages/Tags';
 import SocialMedia from '../../../Pages/SocialMedia';
 import Info from '../../../Pages/User';
 import { getUser } from '../../../utils/Matches';
+import UserCarousel from '../../../Pages/Carousel';
 
 function User() {
   const location = useLocation();
   const history = useHistory();
   var path = location.pathname.replace('/matches/', '');
 
-  var user = getUser(path);
+  const [user, setUser] = useState(getUser(path));
 
   if(!user) return <Matches />
 
   return(
     <div className="userM">
-      <div className="profilePic" style={{ backgroundImage: `url(${user.images[0]})` }}/>
+      <UserCarousel user={user} />
       <div onClick={() => history.goBack()} className="backBtn" >
         <img src={chevron} className="back" alt="back" />
         <span className="text">Back</span>

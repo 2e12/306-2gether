@@ -1,0 +1,189 @@
+.header {
+  color: var(--main-light-color);
+  margin-left: 55px;
+
+  .title {
+    margin-left: -160px !important;
+    font-size: 45px !important;
+  }
+
+  .status {
+    font-size: 20px !important;
+  }
+}
+
+.lines {
+  margin-top: 25px;
+
+  .line {
+    border: 2.5px solid rgba($color: white, $alpha: 0.5);
+    border-radius: 50px;
+    width: 70px !important;
+    margin-right: 30px;
+    background-color: rgba($color: white, $alpha: 0.5);
+  }
+
+  .aktiv {
+    border: 2.5px solid var(--main-light-color) !important;
+    background-color: var(--main-light-color);
+  }
+}
+
+.arrow {
+  width: 55px;
+  height: 55px;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  right: 0px !important;
+  float: right !important;
+  padding: 10px 10px;
+  margin-top: 15px;
+  margin-bottom: 20px !important;
+}
+
+.info {
+  font-size: 15px;
+  color: var(--grey-color);
+  margin-bottom: 10px !important;
+}
+
+label {
+  margin-bottom: 0px !important;
+  font-size: 10px;
+}
+
+textarea, input {
+  width: 100%;
+  font-size: 15px ¨!important;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  padding-bottom: 10px !important;
+  border-bottom-color: rgba($color: #707070, $alpha: 0.5);
+  border-bottom-width: 1px;
+  margin-bottom: 15px;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+.credentials {
+  .title {
+    margin-top: -10px !important;
+    margin-left: -180px !important;
+  }
+
+  .toLogIn {
+    text-align: center !important;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 90px;
+  
+    .link {
+      color: var(--secondary-color);
+    }
+  }
+}
+
+.personalDetails {
+  .info {
+    margin-bottom: 25px !important;
+  }
+
+  .description {
+    margin-top: 0px !important;
+    margin-right: 0px !important;
+
+    textarea {
+      height: 35px;
+    }
+  }
+
+  .photos {
+    .profilePic {
+      height: 0px !important;
+    }
+
+    .photosLbl {
+      display: block;
+      margin-bottom: 25px !important;
+    }
+
+    .photosBtn {
+      display: block;
+      font-size: 15px;
+      color: var(--main-light-color);
+      background-color: var(--secondary-color);
+      height: 25px;
+      width: 120px;
+      text-align: center !important;
+      border-radius: 5px;
+    }
+
+    .pic {
+      width: 60px;
+      height: 60px;
+    }
+
+    .remove {
+      width: 60px;
+      height: 20px !important;
+      color: var(--main-light-color);
+      font-size: 10px;
+    }
+  }
+}
+
+.back-register {
+  margin-left: -40px;
+  margin-bottom: 30px;
+  width: 35px !important;
+  transform: rotate(180deg);
+}
+
+.percent {
+  font-size: 15px;
+  color: rgba($color: white, $alpha: 0.75);
+
+  span {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--main-light-color);
+    margin-right: 15px;
+  }
+}
+
+.socialMedia {
+  .icon {
+    margin-right: 15px;
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .socialMail {
+    width: 250px;
+  }
+
+  .accountBtn {
+    color: var(--main-light-color);
+    background-color: var(--secondary-color);
+    font-size: 20px;
+    width: 150px;
+    height: 45px;
+    text-align: center !important;
+    margin: auto !important;
+    padding: auto !important;
+    padding-top: 5px !important;
+    border-radius: 10px;
+  }
+}
+
+.submitBtn {
+  display: none;
+}
+
+.floatRight {
+  float: right !important;
+}

@@ -15,19 +15,21 @@ function Template({children}) {
 
   return(
     <div>
-    <div className="red-box">
-      <div className="container">
-        <div className="row">
-          <div className="white-circle">
-            <div className="profile-pic" style={{ backgroundImage: `url(${user.images[0]})` }} />
+      <div className="red-box">
+        <div className="container">
+          <div className="row">
+            <div className="white-circle">
+              <div className="profile-pic" style={{ backgroundImage: `url(${user.images[0]})` }} />
+            </div>
+            <div className="profile">
+              <User user={user} size="small"/>
+            </div>
           </div>
-          <User user={user} size="small"/>
         </div>
       </div>
-    </div>
-    <div className="white-box">
-      {children}
-    </div>
+      <div className="white-box">
+        {children}
+      </div>
     </div>
   )
 }

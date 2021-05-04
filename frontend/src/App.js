@@ -7,16 +7,23 @@ import Matches from './Components/Matches';
 import Profile from './Components/Profile';
 import Menu from './Components/Profile/Menu';
 import User from './Components/Matches/User';
+import Register from './Pages/Register';
 
 const App = () => {
-  const [isLog, setIsLog] = useState(false);
+  const [token, setToken] = useState(false);
+  return(
+    <Router>
+      {
+        !token ? <UnregisterApp setToken={setToken} /> : <RegisterApp setToken={setToken} />
+      }
+    </Router>
+  )
+}
 
+const RegisterApp = ({setToken}) => {
   return(
     <Router>
       <Switch>
-        <Route exact path="/login">
-          <Login />
-        </Route>
         <Route exact path="/matches">
           <Matches />
         </Route>
@@ -24,7 +31,7 @@ const App = () => {
           <User />
         </Route>
         <Route exact path="/profile">
-          <Profile />
+          <Profile setToken={setToken} />
         </Route>
         <Route exact path="/profile/:profileID">
           <Menu />
@@ -35,7 +42,21 @@ const App = () => {
       </Switch>
       <Navbar />
     </Router>
-    
+  )
+}
+
+const UnregisterApp = ({setToken}) => {
+  return(
+    <Router>
+      <Switch>
+        <Route exact path="/register">
+          <Register setToken={setToken} />
+        </Route>
+        <Route path="*">
+          <Login setToken={setToken} />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 

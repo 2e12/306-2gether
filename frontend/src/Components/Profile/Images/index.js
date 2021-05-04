@@ -38,7 +38,7 @@ function Images() {
           ))}
         </div>
       </div>
-      <label for="file-upload" className="uploadBtn">
+      <label htmlFor="file-upload" className="uploadBtn">
         <span>
           Upload image
         </span>
