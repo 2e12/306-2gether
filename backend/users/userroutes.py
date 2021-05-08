@@ -13,7 +13,7 @@ import secrets
 from backend.db_helpers import get_db
 from backend.users.useractions import get_user_by_username, create_user, update_user, get_user_by_id
 from backend.users.usermodels import User
-from backend.users.userschemas import UserOutputSchema, UserCreateSchema, UserUpdateSchema
+from backend.users.userschemas import UserOutputSchema, UserCreateSchema, UserUpdateSchema, UserCompleteSchema
 
 user_router = InferringRouter()
 security = HTTPBasic()
@@ -36,7 +36,7 @@ def auth(credentials: HTTPBasicCredentials = Depends(security)):
     return user
 
 
-@user_router.post("/me", response_model=UserOutputSchema)
+@user_router.post("/me", response_model=UserCompleteSchema)
 def register_user(user: UserCreateSchema, db: Session = Depends(get_db)):
     return create_user(db, user)
 
@@ -46,10 +46,10 @@ class UserRoutes:
     db: Session = Depends(get_db)
     user: User = Depends(auth)
 
-    @user_router.get("/me", response_model=UserOutputSchema)
+    @user_router.get("/me", response_model=UserCompleteSchema)
     def get_current_user(self):
         return self.user
 
-    @user_router.put("/me", response_model=UserOutputSchema)
+    @user_router.put("/me", response_model=UserCompleteSchema)
     def update_user(self, user: UserUpdateSchema):
         return update_user(self.db, user, get_user_by_id(self.db, self.user.id))

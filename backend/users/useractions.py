@@ -9,6 +9,7 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 from backend.db_helpers import create_db_object, apply_values_to_object
+from backend.users.contacts import resolve_contacts
 from backend.users.tags import resolve_tags
 from backend.users.usermodels import User
 from backend.users.userschemas import UserCreateSchema, UserUpdateSchema
@@ -32,10 +33,11 @@ def get_user_by_username(db: Session, username: str):
 
 def create_user(db: Session, user: UserCreateSchema):
     if is_user_valid(db, user):
-        new_user = create_db_object(user, User, exclude_keys=['password_hash', 'tags'])
+        new_user = create_db_object(user, User, exclude_keys=['password_hash', 'tags', 'contact_options'])
         new_user.password_hash = hashlib.sha256(user.password.encode()).hexdigest()
         new_user.tags = resolve_tags(db, user.tags)
         db.add(new_user)
+        new_user.contact_options = resolve_contacts(db, user.contact_options, new_user)
         db.commit()
         return new_user
 
@@ -46,6 +48,7 @@ def update_user(db: Session, input_user: UserUpdateSchema, user: User):
             'password_hash',
             'tags',
             'email',
+            'contact_options',
             'id',
             'username',
             'gender'
@@ -55,6 +58,7 @@ def update_user(db: Session, input_user: UserUpdateSchema, user: User):
             user.password_hash = hashlib.sha256(input_user.password.encode()).hexdigest()
 
         user.tags = resolve_tags(db, input_user.tags)
+        user.contact_options = resolve_contacts(db, input_user.contact_options, user)
         db.commit()
         return user
 
