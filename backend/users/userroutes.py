@@ -11,9 +11,9 @@ import hashlib
 import secrets
 
 from backend.db_helpers import get_db
-from backend.users.useractions import get_user_by_username, create_user, update_user, get_user_by_id
+from backend.users.useractions import get_user_by_username, create_user, update_user, get_user_by_id, remove_user
 from backend.users.usermodels import User
-from backend.users.userschemas import UserOutputSchema, UserCreateSchema, UserUpdateSchema, UserCompleteSchema
+from backend.users.userschemas import UserCreateSchema, UserUpdateSchema, UserCompleteSchema
 
 user_router = InferringRouter()
 security = HTTPBasic()
@@ -53,3 +53,8 @@ class UserRoutes:
     @user_router.put("/me", response_model=UserCompleteSchema)
     def update_user(self, user: UserUpdateSchema):
         return update_user(self.db, user, get_user_by_id(self.db, self.user.id))
+
+    @user_router.delete("/me")
+    def delete_user(self):
+        remove_user(self.db, get_user_by_id(self.db, self.user.id))
+        return 'success'

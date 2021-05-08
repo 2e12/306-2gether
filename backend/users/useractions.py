@@ -63,7 +63,7 @@ def update_user(db: Session, input_user: UserUpdateSchema, user: User):
         return user
 
 
-def is_user_valid(db: Session, user: UserCreateSchema, ignore_exist_check=False):
+def is_user_valid(db: Session, user: UserCreateSchema, ignore_exist_check=False) -> bool:
 
     if user_exists(db, user.username, user.email) and not ignore_exist_check:
         raise HTTPException(status_code=422, detail="A user with this email or username already exists.")
@@ -82,6 +82,11 @@ def is_user_valid(db: Session, user: UserCreateSchema, ignore_exist_check=False)
         raise HTTPException(status_code=422, detail="A age of at least 18 years is required to create an account.")
 
     return True
+
+
+def remove_user(db: Session, user: User) -> None:
+    db.delete(user)
+    db.commit()
 
 
 def user_exists(db: Session, username: str=None, mail: str=None) -> bool:
