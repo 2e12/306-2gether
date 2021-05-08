@@ -51,7 +51,7 @@ class UserRoutes:
         return self.user
 
     @user_router.put("/me", response_model=UserCompleteSchema)
-    def update_user(self, user: UserUpdateSchema):
+    def update_current_user(self, user: UserUpdateSchema):
         return update_user(self.db, user, get_user_by_id(self.db, self.user.id))
 
     @user_router.delete("/me")
