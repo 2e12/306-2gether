@@ -14,16 +14,20 @@ def create_tag(db: Session, name):
     return category
 
 
-def tag_exists(db: Session, name):
+def tag_exists(db: Session, name: str) -> bool:
     return db.query(db.query(Tag).filter_by(name=name).exists()).scalar()
 
 
-def get_tag_by_name(db, name):
+def get_tag_by_name(db: Session, name: str) -> Tag:
     return db.query(Tag).filter_by(name=name).first()
 
 
-def get_tags(db: Session, skip: int, limit: int):
+def get_tags(db: Session, skip: int, limit: int) -> List[Tag]:
     return db.query(Tag).order_by(Tag.name.asc()).offset(skip).limit(limit).all()
+
+
+def search_tags(db: Session, search_string: str) -> List[Tag]:
+    return db.query(Tag).filter(Tag.name.startswith(search_string.lower())).limit(10).all()
 
 
 def resolve_tags(db: Session, tags: List[TagBaseSchema]) -> List[TagSchema]:
