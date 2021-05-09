@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 
 from backend.db_helpers import create_db_object, apply_values_to_object
 from backend.users.contacts import resolve_contacts
-from backend.users.tags import resolve_tags
+from backend.tags.tagactions import resolve_tags
 from backend.users.usermodels import User
 from backend.users.userschemas import UserCreateSchema, UserUpdateSchema
 

@@ -2,8 +2,8 @@ from typing import List
 
 from sqlalchemy.orm import Session
 
-from backend.users.usermodels import Tag
-from backend.users.userschemas import TagBaseSchema, TagSchema
+from backend.tags.tagmodels import Tag
+from backend.tags.tagschemas import TagBaseSchema, TagSchema
 
 
 def create_tag(db: Session, name):
