@@ -8,6 +8,7 @@ class Tag(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False, index=True)
+    usage = Column(Integer, nullable=True, index=True)
 
 
 tag_user_table = Table('tag_user', Base.metadata,
