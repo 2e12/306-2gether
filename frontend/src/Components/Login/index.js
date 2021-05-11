@@ -13,7 +13,7 @@ function Login({setToken, setPassword, setUser}) {
     e.preventDefault();
     var user = await getUser(username, pwd);
     if(user) {
-      getToken(user)
+      getToken(user, pwd)
       if(checkToken(user)){
         setUser(user);
         setPassword(pwd);

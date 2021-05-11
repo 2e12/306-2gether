@@ -158,7 +158,9 @@ export function getMatches() {
 };
 
 
-export function setInteraction(userId, like, uname, pwd) {
+export function setInteraction(userId, like) {
+  var uname = JSON.parse(sessionStorage.getItem('token')).username;
+  var pwd = sessionStorage.getItem('pwd');
   var url = API_PATH + `/suggestion/interact`;
   var response
   axios.post(url, {target_user_id: userId, like: like}, {
@@ -176,7 +178,9 @@ export function setInteraction(userId, like, uname, pwd) {
   });
 };
 
-export function getSuggestion(uname, pwd) {
+export function getSuggestion() {
+  var uname = JSON.parse(sessionStorage.getItem('token')).username;
+  var pwd = sessionStorage.getItem('pwd');
   var url = API_PATH + `/suggestion/get`;
   var response;
   axios.get(url, {
@@ -194,9 +198,16 @@ export function getSuggestion(uname, pwd) {
   });
 };
 
-export function getUser(index) {
-  return matches.find((user) => user.id === parseInt(index));
+export async function getUser (index) {
+  var users = await getSuggestion();
+  var user = users.find((user) => user.id === parseInt(index));
+  console.log(users);
+  return user;
 };
+
+// export function getUser(index) {
+//   return matches.find((user) => user.id === parseInt(index));
+// };
 
 export function getUsers() {
   return matches;

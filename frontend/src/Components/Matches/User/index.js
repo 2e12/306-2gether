@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import './user.scss';
 import chevron from '../../../assets/chevron_grey.png';
 import Matches from '..';
 import Tags from '../../Tags';
 import SocialMedia from '../../SocialMedia';
-import { getUser } from '../../../utils/Matches';
+import { getSuggestion, getUser } from '../../../utils/Matches';
 import UserCarousel from '../../Carousel';
 import Info from '../../User'
 
@@ -14,7 +14,16 @@ function User() {
   const history = useHistory();
   var path = location.pathname.replace('/matches/', '');
 
-  const [user, setUser] = useState(getUser(path));
+  const [user, setUser] = useState();
+
+
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     return await getSuggestion;
+  //   }
+  //   var match = getData().find((user) => user.id === parseInt(path));
+  //   setUser(match);
+  // }, [])
 
   if(!user) return <Matches />
 

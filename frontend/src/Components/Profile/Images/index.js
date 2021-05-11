@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Cloudinary} from 'cloudinary-core';
 import './images.scss';
 import Andreas_1 from '../../../assets/andreas/Andreas_1.jpg';
@@ -8,20 +8,35 @@ import Andreas_4 from '../../../assets/andreas/Andreas_4.jpg';
 import Andreas_5 from '../../../assets/andreas/Andreas_5.jpg';
 import Andreas_6 from '../../../assets/andreas/Andreas_6.jpg';
 import { uploadFile } from '../../../utils/CloudinaryService';
+import { getUser } from '../../../utils/User';
+
 
 function Images() {
-    
-  var images = [
-    Andreas_1,
-    Andreas_2,
-    Andreas_3,
-    Andreas_4,
-    Andreas_5,
-    Andreas_6
-  ]
+  const [images, setImages] = useState();
+  
+  // var images = [
+  //   Andreas_1,
+  //   Andreas_2,
+  //   Andreas_3,
+  //   Andreas_4,
+  //   Andreas_5,
+  //   Andreas_6
+  // ]
 
   const uploadImage = (event) => {
     uploadFile(event.target.files[0]);
+  }
+
+  useEffect(() => {
+    const getData = async () => {
+      var user = await getUser();
+      setImages(user.images);
+    }
+    getData();
+  }, [])
+
+  if (!images) {
+    return null;
   }
 
   return(

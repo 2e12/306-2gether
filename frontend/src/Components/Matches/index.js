@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 import './matches.scss';
 import search_color from './../../assets/search_color.png';
-import { getMatches } from '../../utils/Matches';
+import { getMatches, getSuggestion } from '../../utils/Matches';
 
 function Matches() {
   const [matches, setMatches] = useState(getMatches());
+  // const [matches, setMatches] = useState();
 
   const calculateAge = (birthday) => { // birthday is a date
     var ageDifMs = Date.now() - birthday.getTime();
@@ -17,21 +18,29 @@ function Matches() {
     console.log(e.target.value);
   }
 
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     var user = await getSuggestion();
+  //     setMatches(user);
+  //   }
+  //   getData();
+  // }, [])
+
   return(
     <div className="container">
       <div className="container searchTag">
         <div className="row">
           <img src={search_color} alt="search" className="search" />
-          <input id="match" type="text" name="match" onChange={(e) => searchMatches(e)} placeholder={`${matches.length} Matches durchsuchen`} autoComplete="off" />
+          <input id="match" type="text" name="match" onChange={(e) => searchMatches(e)} placeholder={`${matches ? matches.length : 0} Matches durchsuchen`} autoComplete="off" />
         </div>
       </div>
       <div className="list">
-        {matches.map((user, index) => (
+        {matches && matches.map((user, index) => (
           <div className="user" key={index}>
-          <NavLink to={`matches/${user.id}`}  key={index} activeClassName="text-style">
+          <NavLink to={`/matches/${user.id}`}  key={index} activeClassName="text-style">
             <div className="container">
               <div className="row">
-                <div className="profile-pic" style={{ backgroundImage: `url(${user.images[0]})` }} />
+                <div className="profile-pic" style={user.images ? { backgroundImage: `url(${user.images[0]})` } : {}} />
                 <div className="matches">
                   <span className="name">{user.userName}</span>
                   <span className="age">{calculateAge(user.birthdate)}</span>
