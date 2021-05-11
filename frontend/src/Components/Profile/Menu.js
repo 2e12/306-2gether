@@ -82,7 +82,7 @@ function Menu() {
                         <input type="date" required></input>
                     </div>
                     <div className="fuckingWaste">
-                        <button className="otherbutton">Edit</button>
+                        <button className="otherbutton">Save</button>
                     </div>
                 </div>
             </Template>
