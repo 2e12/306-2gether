@@ -35,3 +35,4 @@ class User(Base):
         'Tag',
         secondary=tag_user_table
     )
+    pictures = relationship('Picture')

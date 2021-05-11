@@ -13,12 +13,19 @@ from backend.tags.tagrouter import tag_router
 from backend.users.exampleusers import create_example_users
 from backend.users.userroutes import user_router
 
+from starlette.applications import Starlette
+from starlette.routing import Mount
+from starlette.staticfiles import StaticFiles
+
 app = FastAPI()
 Base.metadata.create_all(engine)
 
 origins = [
     "http://localhost:8100",
 ]
+
+# serve static image files from images directory
+app.mount("/images", StaticFiles(directory="backend/images"), name="images")
 
 app.add_middleware(
     CORSMiddleware,
