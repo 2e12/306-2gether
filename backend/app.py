@@ -10,6 +10,7 @@ from backend.db_helpers import get_db
 from backend.suggestions.suggestionroutes import suggestion_router
 from backend.tags.tagactions import count_tag_usage
 from backend.tags.tagrouter import tag_router
+from backend.users.exampleusers import create_example_users
 from backend.users.userroutes import user_router
 
 app = FastAPI()
@@ -53,3 +54,8 @@ app.include_router(
 @repeat_every(seconds=15 * 60) # all 15 min
 def update_tag_usages():
     count_tag_usage(get_db())
+
+
+@app.on_event("startup")
+def generate_example_users():
+    create_example_users(get_db())
