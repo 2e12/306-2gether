@@ -16,6 +16,15 @@ class Tag(Base):
     name = Column(String, nullable=False, index=True)
 
 
+class Contact(Base):
+    __tablename__ = 'contact'
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(20), index=True)
+    value = Column(String(90))
+    user_id = Column(Integer, ForeignKey('user.id'))
+
+
 class User(Base):
     __tablename__ = 'user'
 
@@ -28,6 +37,9 @@ class User(Base):
     description = Column('description', String(800), nullable=True)
     birthdate = Column('birthday', Date)
     gender = Column("gender", Enum('female', 'male', 'undefined', name='gender_enum', create_type=False))
+
+    contact_options = relationship("Contact")
+
 
     tags = relationship(
         'Tag',
