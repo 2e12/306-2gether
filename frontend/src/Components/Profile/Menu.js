@@ -81,6 +81,9 @@ function Menu() {
                         <p className="description">Birthdate</p>
                         <input type="date" required></input>
                     </div>
+                    <div className="fuckingWaste">
+                        <button className="otherbutton">Edit</button>
+                    </div>
                 </div>
             </Template>
         </div>

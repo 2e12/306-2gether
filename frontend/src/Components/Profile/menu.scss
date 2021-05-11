@@ -37,3 +37,21 @@ h1 {
     }
   }
 }
+
+.fuckingWaste {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .otherbutton {
+    padding: 10px 10px;
+    width: 40%;
+    color: var(--main-light-color);
+    font-weight: bolder;
+    background-color: var(--secondary-color);
+    border: none;
+    outline: none;
+    border-radius: 10px;
+  }
+}
