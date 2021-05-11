@@ -15,6 +15,7 @@ def create_example_users(db: Session, count: int = 4) -> None:
              'email': 'gibb{}@gibb.ch'.format(i),
              'firstname': 'demo user',
              'gender': 'male',
+             'pictures': [],
              'lastname': 'demo user',
              'password': 'sml12345',
              'tags': [{'name': 'demo'},
