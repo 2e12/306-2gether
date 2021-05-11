@@ -1,5 +1,15 @@
 # 2gether
 
+## Demo Users
+
+| E-Mail        | Username | Password |
+|---------------|----------|----------|
+| gibb0@gibb.ch | gibb0    | sml12345 |
+| gibb1@gibb.ch | gibb1    | sml12345 |
+| gibb2@gibb.ch | gibb2    | sml12345 |
+| gibb3@gibb.ch | gibb3    | sml12345 |
+A set of demo users will be auto generated if not existing.
+
 ## API
 
 Make sure that the backend is running and open the following URL in order to take a look at the API specification.
