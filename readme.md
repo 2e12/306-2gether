@@ -8,6 +8,7 @@
 | gibb1@gibb.ch | gibb1    | sml12345 |
 | gibb2@gibb.ch | gibb2    | sml12345 |
 | gibb3@gibb.ch | gibb3    | sml12345 |
+
 A set of demo users will be auto generated if not existing.
 
 ## API
