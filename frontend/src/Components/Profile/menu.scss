@@ -1,18 +1,39 @@
 .back {
-  width: 35px !important;
+  width: 35px;
   transform: rotate(180deg);
 }
 
 .text {
   color: var(--grey-color);
   font-size: 20px;
-  vertical-align: middle !important;
+  vertical-align: middle;
 }
 
-.title {
-  font-size: 35px;
-  font-weight: 600;
-  text-align: center !important;
-  margin-top: 5px;
-  margin-left: -20px !important;
+h1 {
+  font-size: 25pt;
+  font-weight: 500;
+}
+
+.inputpackage {
+  width: 100%;
+
+  .description {
+    font-size: 10pt;
+    padding: 0pt;
+    margin: 0pt;
+  }
+
+  input {
+    width: 90%;
+    font-size: 13pt;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-color: var(--grey-color);
+    border-bottom-width: 1px;
+
+    ::placeholder {
+      color: var(--main-color);
+    }
+  }
 }

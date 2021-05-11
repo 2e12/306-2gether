@@ -18,7 +18,7 @@ const App = () => {
   return(
     <Router>
       {
-        !token ? <UnregisterApp setToken={setToken} /> : <RegisterApp setToken={setToken} />
+        token ? <UnregisterApp setToken={setToken} /> : <RegisterApp setToken={setToken} />
       }
     </Router>
   )

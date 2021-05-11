@@ -10,6 +10,11 @@
   margin-top: 60px;
 }
 
+span {
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .confirm {
   display: none;
   position: absolute;
@@ -21,11 +26,6 @@
   margin-top: -350px !important;
   margin-left: -7.5px !important;
   padding: 20px 30px;
-
-  span {
-    font-size: 20px;
-    font-weight: 500;
-  }
 }
 
 .btnConfirm {
@@ -34,11 +34,6 @@
   background-color: var(--secondary-color);
   border-radius: 5px;
   padding: 5px 15px;
-
-  span {
-    font-size: 20px;
-    font-weight: 500;
-  }
 }
 
 .save {
