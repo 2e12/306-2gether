@@ -4,12 +4,10 @@ from typing import Optional, List
 from pydantic.main import BaseModel
 
 
-class PictureBaseSchema(BaseModel):
+class PictureSchema(BaseModel):
     id: int
+    path: Optional[str]
 
     class Config:
         orm_mode = True
 
-
-class PictureSchema(PictureBaseSchema):
-    path: Optional[str]

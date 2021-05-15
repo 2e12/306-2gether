@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from backend.pictures.picturemodel import Picture
 from backend.users.usermodels import User
 from fastapi import HTTPException, status
-from backend.pictures.pictureschema import PictureBaseSchema, PictureSchema
+from backend.pictures.pictureschema import PictureSchema
 from PIL import Image, UnidentifiedImageError
 
 
@@ -12,7 +12,7 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 picture_dir = os.path.join(ROOT_DIR, "images")
 
 
-def create_picture(db: Session, user: User):
+def create_picture(db: Session, user: User) -> Picture:
     picture = Picture()
     picture.user_id = user.id
     db.add(picture)
@@ -21,24 +21,24 @@ def create_picture(db: Session, user: User):
     return picture
 
 
-def update_picture(db: Session, picture: Picture, path):
+def update_picture(db: Session, picture: Picture, path) -> Picture:
     picture.path = path
     db.commit()
     return picture
 
 
-def get_picture_by_id(db: Session, id: int):
+def get_picture_by_id(db: Session, id: int) -> Picture:
     return db.query(Picture).filter_by(id=id).first()
 
 
-def resolve_pictures(db: Session, images: List[PictureBaseSchema]):
+def resolve_pictures(db: Session, images: List[PictureSchema]) -> List[Picture]:
     db_images = []
     for image in images:
         db_images.append(get_picture_by_id(db, image.id))
     return db_images
 
 
-def upload_picture(db: Session, picture, user):
+def upload_picture(db: Session, picture, user) -> Picture:
     try:
         picture = Image.open(picture.file)
     except UnidentifiedImageError:
