@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from backend.db_helpers import create_db_object, apply_values_to_object
 from backend.users.contacts import resolve_contacts
 from backend.tags.tagactions import resolve_tags
+from backend.pictures.picture import resolve_pictures
 from backend.users.usermodels import User
 from backend.users.userschemas import UserCreateSchema, UserUpdateSchema
 

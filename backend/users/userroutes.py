@@ -5,7 +5,7 @@ from fastapi_utils.inferring_router import InferringRouter
 
 from sqlalchemy.orm import Session
 
-from fastapi import Depends, HTTPException, status
+from fastapi import HTTPException, status
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 import hashlib
 import secrets
@@ -13,6 +13,9 @@ import secrets
 from backend.db_helpers import get_db
 from backend.users.useractions import get_user_by_username, create_user, update_user, get_user_by_id, remove_user
 from backend.users.usermodels import User
+from backend.pictures.pictureschema import PictureSchema
+from fastapi import Depends, UploadFile, File
+from backend.pictures.picture import upload_picture
 from backend.users.userschemas import UserCreateSchema, UserUpdateSchema, UserCompleteSchema
 
 user_router = InferringRouter()
@@ -48,7 +51,7 @@ class UserRoutes:
 
     @user_router.get("/me", response_model=UserCompleteSchema)
     def get_current_user(self):
-        return self.user
+        return  get_user_by_id(self.db, self.user.id)
 
     @user_router.put("/me", response_model=UserCompleteSchema)
     def update_current_user(self, user: UserUpdateSchema):
@@ -58,3 +61,7 @@ class UserRoutes:
     def delete_user(self):
         remove_user(self.db, get_user_by_id(self.db, self.user.id))
         return 'success'
+
+    @user_router.post("/me/image", response_model=PictureSchema)
+    def upload_picture(self, image: UploadFile = File(...)):
+        return upload_picture(self.db, image, get_user_by_id(self.db, self.user.id))
