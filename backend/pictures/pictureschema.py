@@ -10,7 +10,7 @@ class PictureBaseSchema(BaseModel):
         orm_mode = True
 
 
-class PictureSchema(BaseModel):
+class PictureSchema(PictureBaseSchema):
     id: int
 
 
