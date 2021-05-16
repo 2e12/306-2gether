@@ -37,7 +37,6 @@ def create_user(db: Session, user: UserCreateSchema):
         new_user = create_db_object(user, User, exclude_keys=['password_hash', 'tags', 'contact_options'])
         new_user.password_hash = hashlib.sha256(user.password.encode()).hexdigest()
         new_user.tags = resolve_tags(db, user.tags)
-        new_user.images = resolve_pictures(db, user.pictures)
         db.add(new_user)
         new_user.contact_options = resolve_contacts(db, user.contact_options, new_user)
         db.commit()
@@ -60,7 +59,6 @@ def update_user(db: Session, input_user: UserUpdateSchema, user: User):
             user.password_hash = hashlib.sha256(input_user.password.encode()).hexdigest()
 
         user.tags = resolve_tags(db, input_user.tags)
-        user.images = resolve_pictures(db, user.pictures)
         user.contact_options = resolve_contacts(db, input_user.contact_options, user)
         db.commit()
         return user

@@ -1,13 +1,16 @@
-import datetime
-from typing import Optional, List
+from typing import Optional
 
 from pydantic.main import BaseModel
 
 
-class PictureSchema(BaseModel):
-    id: int
+class PictureBaseSchema(BaseModel):
     path: Optional[str]
 
     class Config:
         orm_mode = True
+
+
+class PictureSchema(BaseModel):
+    id: int
+
 

@@ -32,7 +32,6 @@ class UserProfileSchema(BaseModel):
     lastname: str = None
     description: Optional[str] = None
     tags: List[TagSchema]
-    pictures: List[PictureSchema]
     gender: str
     birthdate: datetime.date
 
@@ -41,6 +40,7 @@ class UserProfileSchema(BaseModel):
 
 
 class UserOutputSchema(UserProfileSchema, UserBaseSchema):
+    pictures: List[PictureSchema]
     id: int
 
 
@@ -52,10 +52,7 @@ class UserCreateSchema(UserProfileSchema, UserBaseSchema):
     password: str
     tags: List[TagBaseSchema]
     contact_options: List[ContactBaseSchema]
-    pictures: List[PictureBaseSchema]
 
 
 class UserUpdateSchema(UserCreateSchema):
     password: Optional[str] = None
-    tags: List[TagBaseSchema]
-    pictures: List[PictureBaseSchema]
