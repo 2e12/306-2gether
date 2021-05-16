@@ -1,5 +1,7 @@
 # Source for this file:
 # https://github.com/2e12/sell2buy/blob/main/backend/users/routes.py
+from typing import List
+
 from fastapi_utils.cbv import cbv
 from fastapi_utils.inferring_router import InferringRouter
 
@@ -11,6 +13,7 @@ import hashlib
 import secrets
 
 from backend.db_helpers import get_db
+from backend.matches.matches import get_matches
 from backend.users.useractions import get_user_by_username, create_user, update_user, get_user_by_id, remove_user
 from backend.users.usermodels import User
 from backend.pictures.pictureschema import PictureSchema
@@ -52,6 +55,10 @@ class UserRoutes:
     @user_router.get("/me", response_model=UserCompleteSchema)
     def get_current_user(self):
         return  get_user_by_id(self.db, self.user.id)
+
+    @user_router.get("/me/matches", response_model=List[UserCompleteSchema])
+    def get_matches(self):
+        return get_matches(self.db, self.user.id)
 
     @user_router.put("/me", response_model=UserCompleteSchema)
     def update_current_user(self, user: UserUpdateSchema):
