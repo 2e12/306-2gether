@@ -1,3 +1,5 @@
+import axios from 'axios';
+import {API_PATH} from './ENV_Variable';
 import Anna_1 from './../assets/user/Anna_1.png';
 import Anna_2 from './../assets/user/Anna_2.png';
 import Anna_3 from './../assets/user/Anna_3.jpeg';
@@ -11,6 +13,7 @@ import share from './../assets/socialmedia/share.png';
 import snapchat from './../assets/socialmedia/snapchat.png';
 import youtube from './../assets/socialmedia/youtube.png';
 import tiktok from './../assets/socialmedia/tik-tok.png';
+
 
 var matches = [
   {
@@ -154,9 +157,57 @@ export function getMatches() {
   return matches;
 };
 
-export function getUser(index) {
-  return matches.find((user) => user.id === parseInt(index));
+
+export function setInteraction(userId, like) {
+  var uname = JSON.parse(sessionStorage.getItem('token')).username;
+  var pwd = sessionStorage.getItem('pwd');
+  var url = API_PATH + `/suggestion/interact`;
+  var response
+  axios.post(url, {target_user_id: userId, like: like}, {
+    auth: {
+      username: uname,
+      password: pwd
+    }
+  })
+  .then(function (res) {
+    response = res.data;
+    console.log(response);
+  })
+  .catch(function (err) {
+    console.error('err', err);
+  });
 };
+
+export function getSuggestion() {
+  var uname = JSON.parse(sessionStorage.getItem('token')).username;
+  var pwd = sessionStorage.getItem('pwd');
+  var url = API_PATH + `/suggestion/get`;
+  var response;
+  axios.get(url, {
+    auth: {
+      username: uname,
+      password: pwd
+    }
+  })
+  .then(function (res) {
+    response = res.data;
+    console.log(response);
+  })
+  .catch(function (err) {
+    console.error('err', err);
+  });
+};
+
+export async function getUser (index) {
+  var users = await getSuggestion();
+  var user = users.find((user) => user.id === parseInt(index));
+  console.log(users);
+  return user;
+};
+
+// export function getUser(index) {
+//   return matches.find((user) => user.id === parseInt(index));
+// };
 
 export function getUsers() {
   return matches;

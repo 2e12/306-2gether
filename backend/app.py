@@ -22,6 +22,7 @@ Base.metadata.create_all(engine)
 
 origins = [
     "http://localhost:8100",
+    "http://localhost:3000",
 ]
 
 # serve static image files from images directory
