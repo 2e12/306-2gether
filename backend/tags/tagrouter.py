@@ -21,10 +21,7 @@ class UserRoutes:
 
     @tag_router.get(
         "/search",
-        response_model=List[TagSchema],
-        description="Search for tags by name. "
-                    "Tags will be sorted by popularity. "
-                    "The output is limited to max. 10 tags."
+        description="Search for tags by name. Tags will be sorted by popularity and output is limited to max. 10 tags."
     )
-    def search_tags(self, search_string: str):
+    def search_tags(self, search_string: str) -> List[TagSchema]:
         return search_tags(self.db, search_string)

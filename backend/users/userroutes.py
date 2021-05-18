@@ -42,8 +42,11 @@ def auth(credentials: HTTPBasicCredentials = Depends(security)):
     return user
 
 
-@user_router.post("/me", response_model=UserCompleteSchema)
-def register_user(user: UserCreateSchema, db: Session = Depends(get_db)):
+@user_router.post(
+    "/me",
+    description="Create an new user."
+)
+def register_user(user: UserCreateSchema, db: Session = Depends(get_db)) -> UserCompleteSchema:
     return create_user(db, user)
 
 
@@ -52,20 +55,30 @@ class UserRoutes:
     db: Session = Depends(get_db)
     user: User = Depends(auth)
 
-    @user_router.get("/me", response_model=UserCompleteSchema)
+    @user_router.get(
+        "/me",
+        description="Returns the current authenticated user.",
+        response_model=UserCompleteSchema
+    )
     def get_current_user(self):
         return  get_user_by_id(self.db, self.user.id)
 
     @user_router.get("/me/matches", response_model=List[UserCompleteSchema])
     def get_matches(self):
         return get_matches(self.db, self.user.id)
-
-    @user_router.put("/me", response_model=UserCompleteSchema)
-    def update_current_user(self, user: UserUpdateSchema):
+      
+    @user_router.put(
+        "/me",
+        description="Updates the current authenticated user."
+    )
+    def update_current_user(self, user: UserUpdateSchema) -> UserCompleteSchema:
         return update_user(self.db, user, get_user_by_id(self.db, self.user.id))
 
-    @user_router.delete("/me")
-    def delete_user(self):
+    @user_router.delete(
+        "/me",
+        description="Deletes the current authenticated user."
+    )
+    def delete_current_user(self) -> str:
         remove_user(self.db, get_user_by_id(self.db, self.user.id))
         return 'success'
 
