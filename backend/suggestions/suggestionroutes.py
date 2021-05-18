@@ -19,11 +19,18 @@ class SuggestionRoutes:
     db: Session = Depends(get_db)
     user: User = Depends(auth)
 
-    @suggestion_router.get("/get", response_model=UserOutputSchema)
-    def get_suggested_user(self):
+    @suggestion_router.get(
+        "/get",
+        description="Get a suggested user."
+    )
+    def get_suggested_user(self) -> UserOutputSchema:
         return get_suggestion(self.db, get_user_by_id(self.db, self.user.id))
 
-    @suggestion_router.post("/interact", response_model=InteractionOutputSchema)
+    @suggestion_router.post(
+        "/interact",
+        description="Like or Dislike an other user.",
+        response_model=InteractionOutputSchema
+    )
     def interact(self, target_user_id: int, like: bool):
         return interact_with_user(
             self.db,
