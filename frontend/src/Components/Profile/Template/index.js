@@ -34,7 +34,7 @@ function Template({children}) {
         <div className="container">
           <div className="row">
             <div className="white-circle">
-              <div className="profile-pic" style={user.images ? { backgroundImage: `url(${user.images[0]})` } : {}} />
+              <div className="profile-pic" style={user.pictures[0] && { backgroundImage: `url(${user.pictures[0].path})` }} />
             </div>
             <div className="profile">
               <User user={user} size="small"/>

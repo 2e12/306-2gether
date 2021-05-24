@@ -12,10 +12,10 @@ function UserShort({user, setShowUser, setAction}) {
       onSwipeLeft={() => setAction("dislike")}
       onSwipeRight={() => setAction("like")}
     >
-      <div className="backgroundPic" style={{ backgroundImage: `url(${user.images[0]})` }}>
+      <div className="backgroundPic">
         <div className="infoUser">
           <div className="name">
-            <User user={user} color="white" />
+            <User user={user} />
           </div>
           <div>
             <Tags tags={user.tags} color="black" />

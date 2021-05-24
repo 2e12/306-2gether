@@ -1,28 +1,30 @@
 import React, {useState, useEffect} from 'react';
 import './home.scss';
-import { getSuggestion, getUsers, setInteraction } from '../../utils/Matches';
+import { getSuggestion, setInteraction } from '../../utils/Matches';
 import UserShort from './UserShort';
 import UserDetails from './UserDetails';
 
 function Home() {
-  const [users, setUsers] = useState(getUsers())
-  const [userNr, setUserNr] = useState(0)
+  const [suggestion, setSuggestion] = useState();
   const [showUser, setShowUser] = useState(true);
   const [action, setAction] = useState();
   
   const nextUser = async () => {
-    if(!users[userNr] || !action) return null;
-    console.log("you " + action + " user: " + users[userNr].userName);
-    await setInteraction(users[userNr].id);
-    setUserNr(userNr + 1)
+    if(!suggestion || !action) return null;
+    // console.log("you " + action + " user: " + suggestion.userName);
+    await setInteraction({user: suggestion.id, is_like: action});
+    // setUserNr(userNr + 1)
   }
   
   useEffect(() => {
     const getData = async () => {
-      var user = await getSuggestion;
-      setUsers(user);
+      var user = await getSuggestion();
+      console.log("suggestion: ", user);
+      return user;
+      
     }
-    getData();
+    var data = getData();
+    setSuggestion(data);
   }, [])
 
   useEffect(() => {
@@ -31,7 +33,7 @@ function Home() {
     setAction(null);
   }, [action])
 
-  if(!users || !users[userNr]){
+  if(!suggestion){
     return(
       <p>Momentan gibt es keine neuen potentiellen Matches</p>
     )
@@ -42,13 +44,13 @@ function Home() {
       {
         showUser ? 
           <UserShort 
-            user={users[userNr]} 
+            user={suggestion} 
             setShowUser={setShowUser} 
             setAction={setAction} 
           /> 
         :  
           <UserDetails 
-            user={users[userNr]} 
+            user={suggestion} 
             setShowUser={setShowUser} 
             setAction={setAction}
           />

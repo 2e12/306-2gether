@@ -183,7 +183,7 @@ export function getSuggestion() {
   var pwd = sessionStorage.getItem('pwd');
   var url = API_PATH + `/suggestion/get`;
   var response;
-  axios.get(url, {
+  const suggestion = axios.get(url, {
     auth: {
       username: uname,
       password: pwd
@@ -192,10 +192,12 @@ export function getSuggestion() {
   .then(function (res) {
     response = res.data;
     console.log(response);
+    return response;
   })
   .catch(function (err) {
     console.error('err', err);
   });
+  return suggestion;
 };
 
 export async function getUser (index) {

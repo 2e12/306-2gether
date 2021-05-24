@@ -9,6 +9,8 @@ function User({user, color, size}) {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
+  console.log(user);
+
   return(
     <div className={`user ${color} ${size}`}>
       <span className="name">{user.username}</span>

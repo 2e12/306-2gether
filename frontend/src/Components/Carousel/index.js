@@ -8,9 +8,9 @@ function UserCarousel({user}) {
   return(
     <AliceCarousel className="carousel" >
       {
-        user.images.map((pic, index) => (
+        user.pictures.map((pic, index) => (
           <div key={index}>
-            <img src={pic} className="carouselImg" alt={user.userName} />
+            <img src={pic.path} className="carouselImg" alt={user.userName} />
           </div>
         ))
       }
