@@ -6,7 +6,6 @@ import { getMatches, getSuggestion } from '../../utils/Matches';
 
 function Matches() {
   const [matches, setMatches] = useState(getMatches());
-  // const [matches, setMatches] = useState();
 
   const calculateAge = (birthday) => { // birthday is a date
     var ageDifMs = Date.now() - birthday.getTime();
@@ -15,16 +14,8 @@ function Matches() {
   }
 
   const searchMatches = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
   }
-
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     var user = await getSuggestion();
-  //     setMatches(user);
-  //   }
-  //   getData();
-  // }, [])
 
   return(
     <div className="container">
@@ -42,7 +33,7 @@ function Matches() {
               <div className="row">
                 <div className="profile-pic" style={user.images ? { backgroundImage: `url(${user.images[0]})` } : {}} />
                 <div className="matches">
-                  <span className="name">{user.userName}</span>
+                  <span className="name">{user.username}</span>
                   <span className="age">{calculateAge(user.birthdate)}</span>
                   <p className="gender">{user.gender}</p>
                 </div>
