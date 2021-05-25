@@ -8,7 +8,6 @@ import UserCarousel from '../../Carousel';
 function UserDetails({user, setShowUser, setAction}) {
   return(
     <div>
-      {/* <div className="infoDetailsBackground" style={{ backgroundImage: `url(${user.images[0]})` }}/> */}
       <div className="infoDetailsBackground">
         <UserCarousel user={user} />
       </div>
