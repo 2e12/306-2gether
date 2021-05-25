@@ -16,13 +16,9 @@ function Home() {
     await setInteraction(users[userNr].id);
     setUserNr(userNr + 1)
   }
-  
+
   useEffect(() => {
-    const getData = async () => {
-      var user = await getSuggestion;
-      setUsers(user);
-    }
-    getData();
+    setUsers(getUsers());
   }, [])
 
   useEffect(() => {

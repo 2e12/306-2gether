@@ -14,16 +14,7 @@ function User() {
   const history = useHistory();
   var path = location.pathname.replace('/matches/', '');
 
-  const [user, setUser] = useState();
-
-
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     return await getSuggestion;
-  //   }
-  //   var match = getData().find((user) => user.id === parseInt(path));
-  //   setUser(match);
-  // }, [])
+  const [user, setUser] = useState(getUser(path));
 
   if(!user) return <Matches />
 

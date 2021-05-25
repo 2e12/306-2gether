@@ -18,7 +18,7 @@ import tiktok from './../assets/socialmedia/tik-tok.png';
 var matches = [
   {
     id: 1,
-    userName: 'Anna',
+    username: 'Anna',
     birthdate: new Date('1995-12-17'),
     name: 'Anna',
     lastName: 'Mustermann',
@@ -63,7 +63,7 @@ var matches = [
   },
   {
     id: 2,
-    userName: 'Luana',
+    username: 'Luana',
     birthdate: new Date('2002-12-17'),
     name: 'Anna',
     lastName: 'Mustermann',
@@ -108,7 +108,7 @@ var matches = [
   },
   {
     id: 3,
-    userName: 'Lena',
+    username: 'Lena',
     birthdate: new Date('2000-12-17'),
     name: 'Anna',
     lastName: 'Mustermann',
@@ -198,16 +198,9 @@ export function getSuggestion() {
   });
 };
 
-export async function getUser (index) {
-  var users = await getSuggestion();
-  var user = users.find((user) => user.id === parseInt(index));
-  console.log(users);
-  return user;
+export function getUser(index) {
+  return matches.find((user) => user.id === parseInt(index));
 };
-
-// export function getUser(index) {
-//   return matches.find((user) => user.id === parseInt(index));
-// };
 
 export function getUsers() {
   return matches;
