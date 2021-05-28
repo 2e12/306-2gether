@@ -1,7 +1,7 @@
 import React from 'react';
 import Swipe from 'react-easy-swipe';
 import User from '../../User';
-import Tags from '../../Tags';
+import Tags from '../../../Tags';
 import Buttons from '../../Buttons';
 
 function UserShort({user, setShowUser, setAction}) {

@@ -6,6 +6,9 @@ import Password from './Password';
 import chevron from '../../assets/chevron_grey.png';
 import Images from './Images';
 import Profile from './';
+import Personalinfo from "./Personalinfo";
+import Description from "./Description";
+import SocialMedia from "./SocialMedia";
 
 
 function Menu() {
@@ -22,17 +25,17 @@ function Menu() {
         'infos': {
             path: 'infos',
             title: 'Personal informations',
-            content: <Password/>,
+            content: <Personalinfo />,
         },
         'tags': {
             path: 'tags',
             title: 'Tags & Descriptions',
-            content: <Password/>,
+            content: <Description/>,
         },
         'social-media': {
-            path: 'social-media',
+            path: 'socialmedia',
             title: 'Social Media',
-            content: <Password/>,
+            content: <SocialMedia/>,
         },
         'images': {
             path: 'images',
@@ -50,40 +53,14 @@ function Menu() {
         <div>
             <Template>
                 <div>
-                    <div onClick={() => history.goBack()} className="backBtn">
-                        <img src={chevron} className="back" alt="back"/>
+                    <div onClick={() => history.goBack()} className="backBtn" >
+                        <img src={chevron} className="back" alt="back" />
                         <span className="text">Back</span>
                     </div>
-                    <h1>
-                        {menu[path].title}
-                    </h1>
-                    <div className="inputpackage">
-                        <p className="description">Username</p>
-                        <input type="text" placeholder="Username" required></input>
+                    <div className="title">
+                        <span>{menu[path].title}</span>
                     </div>
-                    <div className="inputpackage">
-                        <p className="description">Firstname</p>
-                        <input type="text" placeholder="Firstname" required></input>
-                    </div>
-                    <div className="inputpackage">
-                        <p className="description">Lastname</p>
-                        <input type="text" placeholder="Lastname" required></input>
-                    </div>
-                    <div className="inputpackage">
-                        <p className="description">Mail</p>
-                        <input type="text" placeholder="Mail" required></input>
-                    </div>
-                    <div className="inputpackage">
-                        <p className="description">Gender</p>
-                        <input type="text" placeholder="Gender" required></input>
-                    </div>
-                    <div className="inputpackage">
-                        <p className="description">Birthdate</p>
-                        <input type="date" required></input>
-                    </div>
-                    <div className="fuckingWaste">
-                        <button className="otherbutton">Save</button>
-                    </div>
+                    {menu[path].content}
                 </div>
             </Template>
         </div>

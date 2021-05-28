@@ -1,0 +1,35 @@
+.inputpackage {
+  margin-top: 8pt;
+  width: 100%;
+
+  .description {
+    font-size: 10pt;
+    padding: 0pt;
+    margin: 0pt;
+  }
+
+  textarea {
+    width: 90%;
+    font-size: 13pt;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-color: var(--grey-color);
+    border-bottom-width: 1px;
+
+    ::placeholder {
+      color: var(--main-color);
+    }
+  }
+}
+
+.tagspackage {
+  margin-top: 8pt;
+  width: 100%;
+
+  .description {
+    font-size: 10pt;
+    padding: 0pt;
+    margin: 0pt;
+  }
+}
