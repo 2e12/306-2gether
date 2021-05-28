@@ -11,8 +11,9 @@ import share from '../../assets/profile/share.png';
 import description from '../../assets/profile/description.png';
 import chevron from '../../assets/profile/chevron.png';
 import { checkToken, clearToken } from '../../utils/Token';
+import { removeUser } from '../../utils/User';
 
-function Profile({setToken}) {
+function Profile({setToken, user}) {
 
   const openConfirmDelete = () => {
     let subMenu = document.querySelector(".confirm");
@@ -30,7 +31,8 @@ function Profile({setToken}) {
   }
 
   const deleteUser = () => {
-    deleteToken()
+    deleteToken();
+    removeUser();
   }
 
   return(

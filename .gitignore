@@ -1,4 +1,5 @@
 backend/2gether.db
+backend/images/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

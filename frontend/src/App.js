@@ -12,13 +12,17 @@ import { checkToken } from './utils/Token';
 
 const App = () => {
   const [token, setToken] = useState();
+  const [password, setPassword] = useState();
+  const [user, setUser] = useState();
+
   useEffect(() => {
     setToken(checkToken())
   }, [])
+
   return(
     <Router>
       {
-        token ? <UnregisterApp setToken={setToken} /> : <RegisterApp setToken={setToken} />
+        !token ? <UnregisterApp setToken={setToken} setPassword={setPassword} setUser={setUser}  /> : <RegisterApp setToken={setToken} />
       }
     </Router>
   )
@@ -49,15 +53,15 @@ const RegisterApp = ({setToken}) => {
   )
 }
 
-const UnregisterApp = ({setToken}) => {
+const UnregisterApp = ({setToken, setPassword, setUser}) => {
   return(
     <Router>
       <Switch>
         <Route exact path="/register">
-          <Register setToken={setToken} />
+          <Register setToken={setToken} setPassword={setPassword} setUser={setUser} />
         </Route>
         <Route path="*">
-          <Login setToken={setToken} />
+          <Login setToken={setToken} setPassword={setPassword} setUser={setUser} />
         </Route>
       </Switch>
     </Router>

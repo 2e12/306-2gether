@@ -1,3 +1,5 @@
+import axios from 'axios';
+import {API_PATH} from './ENV_Variable';
 import Anna_1 from './../assets/user/Anna_1.png';
 import Anna_2 from './../assets/user/Anna_2.png';
 import Anna_3 from './../assets/user/Anna_3.jpeg';
@@ -12,10 +14,11 @@ import snapchat from './../assets/socialmedia/snapchat.png';
 import youtube from './../assets/socialmedia/youtube.png';
 import tiktok from './../assets/socialmedia/tik-tok.png';
 
+
 var matches = [
   {
     id: 1,
-    userName: 'Anna',
+    username: 'Anna',
     birthdate: new Date('1995-12-17'),
     name: 'Anna',
     lastName: 'Mustermann',
@@ -60,7 +63,7 @@ var matches = [
   },
   {
     id: 2,
-    userName: 'Luana',
+    username: 'Luana',
     birthdate: new Date('2002-12-17'),
     name: 'Anna',
     lastName: 'Mustermann',
@@ -105,7 +108,7 @@ var matches = [
   },
   {
     id: 3,
-    userName: 'Lena',
+    username: 'Lena',
     birthdate: new Date('2000-12-17'),
     name: 'Anna',
     lastName: 'Mustermann',
@@ -152,6 +155,47 @@ var matches = [
 
 export function getMatches() {
   return matches;
+};
+
+
+export function setInteraction(userId, like) {
+  var uname = JSON.parse(sessionStorage.getItem('token')).username;
+  var pwd = sessionStorage.getItem('pwd');
+  var url = API_PATH + `/suggestion/interact`;
+  var response
+  axios.post(url, {target_user_id: userId, like: like}, {
+    auth: {
+      username: uname,
+      password: pwd
+    }
+  })
+  .then(function (res) {
+    response = res.data;
+    console.log(response);
+  })
+  .catch(function (err) {
+    console.error('err', err);
+  });
+};
+
+export function getSuggestion() {
+  var uname = JSON.parse(sessionStorage.getItem('token')).username;
+  var pwd = sessionStorage.getItem('pwd');
+  var url = API_PATH + `/suggestion/get`;
+  var response;
+  axios.get(url, {
+    auth: {
+      username: uname,
+      password: pwd
+    }
+  })
+  .then(function (res) {
+    response = res.data;
+    console.log(response);
+  })
+  .catch(function (err) {
+    console.error('err', err);
+  });
 };
 
 export function getUser(index) {

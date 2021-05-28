@@ -2,6 +2,7 @@ import datetime
 from typing import Optional, List
 
 from pydantic.main import BaseModel
+from backend.pictures.pictureschema import PictureSchema, PictureBaseSchema
 
 from backend.tags.tagschemas import TagBaseSchema, TagSchema
 
@@ -39,6 +40,7 @@ class UserProfileSchema(BaseModel):
 
 
 class UserOutputSchema(UserProfileSchema, UserBaseSchema):
+    pictures: List[PictureSchema]
     id: int
 
 

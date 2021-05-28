@@ -1,0 +1,1 @@
+export const API_PATH = 'http://192.168.211.1:8888/api';

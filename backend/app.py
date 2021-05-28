@@ -10,14 +10,23 @@ from backend.db_helpers import get_db
 from backend.suggestions.suggestionroutes import suggestion_router
 from backend.tags.tagactions import count_tag_usage
 from backend.tags.tagrouter import tag_router
+from backend.users.exampleusers import create_example_users
 from backend.users.userroutes import user_router
+
+from starlette.applications import Starlette
+from starlette.routing import Mount
+from starlette.staticfiles import StaticFiles
 
 app = FastAPI()
 Base.metadata.create_all(engine)
 
 origins = [
     "http://localhost:8100",
+    "http://localhost:3000",
 ]
+
+# serve static image files from images directory
+app.mount("/images", StaticFiles(directory="backend/images"), name="images")
 
 app.add_middleware(
     CORSMiddleware,
@@ -53,3 +62,8 @@ app.include_router(
 @repeat_every(seconds=15 * 60) # all 15 min
 def update_tag_usages():
     count_tag_usage(get_db())
+
+
+@app.on_event("startup")
+def generate_example_users():
+    create_example_users(get_db())
