@@ -84,7 +84,7 @@ function PersonalDetails({setStep, user, setUser}) {
                 <div>Enter Tags</div>
               </label>
               <Tags tags={tags} setTags={setTags} edit="true" />
-              <input type="email" id="tags" placeholder="Enter Tags" autoComplete="off" />
+              <input type="text" id="tags" placeholder="Enter Tags" autoComplete="off" />
             </div>
             <div className="photos">
               <label className="photosLbl">
