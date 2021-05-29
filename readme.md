@@ -41,3 +41,28 @@ $ python -m backend
 This will start the HTTP server. By default port 8888 and host 0.0.0.0 are used. 
 Set the environment variable `FAST_API_HOST` and `FAST_API_PORT` to overwrite them.
 
+
+## Frontend
+
+Make sure that the following steps have been followed.
+
+### Installation
+
+Make sure you have Node and npm installed.
+We recommend Node version `v12.18.3` and npm version `6.14.8`, because we are developing on this version.
+
+Then install all npm dependencies with:
+```shell script
+$ npm i
+```
+
+### Start frontend
+
+Before you can start the frontend make sure that you changed the ENV Variable `API_PATH` to the exact path your backend is running on.\
+As an example: `export const API_PATH = 'http://192.168.211.1:8888/api';`
+
+Start the frontend Server with:
+```shell script
+$ npm start
+```
+This will start the HTTP server. By default port 3000 and host 0.0.0.0 are used. 

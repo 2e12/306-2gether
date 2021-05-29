@@ -156,10 +156,18 @@ textarea:focus, input:focus{
 
 .socialMedia {
   .icon {
-    margin-right: 15px;
+    margin-right: 10px;
     margin-top: 10px;
     width: 40px;
     height: 40px;
+  }
+
+  .instagram{
+    width: 255px !important;
+  }
+
+  .facebook {
+    width: 250px !important;
   }
 
   .socialMail {
@@ -177,6 +185,9 @@ textarea:focus, input:focus{
     padding: auto !important;
     padding-top: 5px !important;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
