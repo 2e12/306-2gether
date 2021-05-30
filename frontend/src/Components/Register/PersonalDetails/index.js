@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Template from '../Template';
 import arrow from '../../../assets/chevron_white_right.png';
 import back from '../../../assets/chevron_white.png';
-import Tags from '../../Tags';
+import Tags from '../../../Tags';
 
 function PersonalDetails({setStep, user, setUser}) {
   const [tags, setTags] = useState(["Musik", "Reisen", "Fitness", "Was trinken gehen", "Mode"]);

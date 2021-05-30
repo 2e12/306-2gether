@@ -1,6 +1,6 @@
 import React from 'react';
 import User from '../../User';
-import Tags from '../../Tags';
+import Tags from '../../../Tags';
 import Buttons from '../../Buttons';
 import arrow from '../../../assets/home/arrow.png';
 import UserCarousel from '../../Carousel';
